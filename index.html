@@ -366,22 +366,134 @@
   @keyframes scrollPulse { 0%, 100% { opacity: 0.4; } 50% { opacity: 1; } }
 
   /* ─── RESPONSIVE ─── */
+  /* ─── RESPONSIVE ─── */
+
+  /* Tablet: 600–900px */
   @media (max-width: 900px) {
     nav { padding: 1.2rem 1.5rem; }
     .nav-links { gap: 1rem; }
     .nav-links a { font-size: 0.75rem; }
+
     section { padding: 4.5rem 1.5rem; }
+
+    /* About */
     #about { grid-template-columns: 1fr; gap: 3rem; padding: 4.5rem 1.5rem; }
     .about-visual { max-width: 360px; margin: 0 auto; }
+
+    /* Consulting */
     .consulting-inner { grid-template-columns: 1fr; gap: 3rem; }
-    .consulting-services { grid-template-columns: 1fr; }
+    .consulting-services { grid-template-columns: 1fr 1fr; }
+
+    /* Hero */
     .hero-content { padding: 0 1.5rem 4rem; }
     .hero-scroll { display: none; }
+
+    /* Timeline */
+    .timeline-track { padding-left: 1.2rem; }
+    .timeline-item { padding-left: 2rem; }
   }
+
+  /* Mobile: ≤600px — collapse ALL multi-column grids */
   @media (max-width: 600px) {
+    /* Nav */
     .nav-links { display: none; }
     .hero-wordmark { display: none; }
-    .nav-right { gap: 1rem; }
+    .nav-right { gap: 0.8rem; }
+
+    /* Typography scale-down */
+    .hero-name { font-size: 3rem; line-height: 1; }
+    .section-title { font-size: 2.2rem; }
+    .timeline-role { font-size: 1.2rem; }
+
+    /* Sections padding */
+    section { padding: 3.5rem 1rem; }
+    #about { padding: 3.5rem 1rem; }
+
+    /* Awards grid → 1 col */
+    .awards-grid { grid-template-columns: 1fr; }
+
+    /* Consulting services → 1 col */
+    .consulting-services { grid-template-columns: 1fr; }
+
+    /* Contact grid → 1 col */
+    .contact-grid { grid-template-columns: 1fr 1fr; }
+
+    /* About badge reposition */
+    .about-badge { width: 5.5rem; height: 5.5rem; bottom: -1.5rem; right: -1rem; }
+    .about-badge .badge-num { font-size: 1.3rem; }
+  }
+
+  /* Small mobile: ≤420px */
+  @media (max-width: 420px) {
+    .contact-grid { grid-template-columns: 1fr; }
+    .lang-btn { padding: 0.3rem 0.5rem; font-size: 0.65rem; }
+  }
+
+  /* ─── INLINE GRID RESPONSIVE OVERRIDES ─────────────────────────────
+     All gallery sections use inline style grids. We override them here.
+  ─────────────────────────────────────────────────────────────────── */
+
+  @media (max-width: 900px) {
+    /* All inline 3-col and 4-col grids → 2 col */
+    [style*="grid-template-columns: 1fr 1fr 1fr"],
+    [style*="grid-template-columns:1fr 1fr 1fr"],
+    [style*="grid-template-columns: 1fr 1fr 1fr 1fr"],
+    [style*="grid-template-columns:1fr 1fr 1fr 1fr"] {
+      grid-template-columns: 1fr 1fr !important;
+    }
+    /* Asymmetric 3-col variants → 1fr 1fr */
+    [style*="grid-template-columns: 1.4fr 1fr 1fr"],
+    [style*="grid-template-columns: 1.3fr 1fr 1fr 1fr"],
+    [style*="grid-template-columns: 1.2fr 1fr 1fr"],
+    [style*="grid-template-columns: 1.2fr 1fr"] {
+      grid-template-columns: 1fr 1fr !important;
+    }
+    /* Asymmetric 2-col wide → stack */
+    [style*="grid-template-columns: 1.6fr 1fr"],
+    [style*="grid-template-columns: 1fr 1.6fr"],
+    [style*="grid-template-columns: 1.4fr 1fr"],
+    [style*="grid-template-columns: 1fr 1.4fr"],
+    [style*="grid-template-columns: 1.3fr 1fr"],
+    [style*="grid-template-columns: 1fr 1.3fr"] {
+      grid-template-columns: 1fr !important;
+    }
+    /* Image heights reduce on tablet */
+    [style*="height:480px"] { height: 300px !important; }
+    [style*="height:380px"] { height: 260px !important; }
+    [style*="height:360px"] { height: 240px !important; }
+    [style*="height:340px"] { height: 220px !important; }
+    [style*="height:320px"] { height: 210px !important; }
+    [style*="height:300px"] { height: 200px !important; }
+    [style*="height:280px"] { height: 200px !important; }
+  }
+
+  @media (max-width: 600px) {
+    /* All inline grids → single column */
+    [style*="display:grid"],
+    [style*="display: grid"] {
+      grid-template-columns: 1fr !important;
+    }
+    /* Image heights flatten on mobile */
+    img[style*="height:"] {
+      height: 220px !important;
+    }
+    /* Section inner max-width */
+    [style*="max-width:1200px"],
+    [style*="max-width:1100px"],
+    [style*="max-width:1300px"],
+    [style*="max-width:900px"] {
+      padding-left: 0 !important;
+      padding-right: 0 !important;
+    }
+    /* Reduce section padding */
+    [style*="padding:7rem 3rem"] { padding: 3.5rem 1rem !important; }
+    [style*="padding: 7rem 3rem"] { padding: 3.5rem 1rem !important; }
+    /* Consulting project entries */
+    [style*="margin-top:3rem;padding-top:3rem"] { margin-top: 2rem !important; padding-top: 2rem !important; }
+    /* Gallery section font sizes */
+    [style*="font-size:1.8rem"] { font-size: 1.4rem !important; }
+    [style*="font-size: 1.8rem"] { font-size: 1.4rem !important; }
+    [style*="font-size:1.3rem"] { font-size: 1.1rem !important; }
   }
 </style>
 </head>
